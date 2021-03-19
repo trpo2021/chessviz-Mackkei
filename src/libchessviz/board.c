@@ -1,4 +1,4 @@
-#pragma once
+#include <libchessviz/board.h>
 #include <stdio.h>
 
 int board(char desk[][])

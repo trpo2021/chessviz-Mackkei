@@ -1,4 +1,4 @@
-#pragma once
+#include <chessviz/board_read.h>
 #include <stdio.h>
 
 int boardRead(char move[])

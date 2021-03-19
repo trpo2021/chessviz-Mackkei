@@ -1,3 +1,4 @@
+#include <libchessviz/move.h>
 #include <stdio.h>
 
 int move(char desk[][], char move[])
@@ -7,6 +8,11 @@ int move(char desk[][], char move[])
 
     j = move[0] - '`';
     i = move[1] - '0';
+
+    if (desk[i][j] == ' ') {
+        printf("\nInput data fail\n");
+        return 1;
+    }
 
     t = desk[i][j];
     desk[i][j] = ' ';
@@ -18,6 +24,11 @@ int move(char desk[][], char move[])
 
     j = move[6] - '`';
     i = move[7] - '0';
+
+    if (desk[i][j] == ' ') {
+        printf("\nInput data fail\n");
+        return 1;
+    }
 
     t = desk[i][j];
     desk[i][j] = ' ';

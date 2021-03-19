@@ -1,4 +1,4 @@
-#pragma once
+#include <libchessbiz/board_print_plain.h>
 #include <stdio.h>
 
 int boardPrint(char desk[][])

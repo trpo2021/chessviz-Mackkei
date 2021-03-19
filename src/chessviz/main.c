@@ -3,7 +3,8 @@
 
 int main()
 {
-	int arr[9][9];
-	
-	return 0;
+    char desk[9][9];
+    char move[11];
+
+    return 0;
 }

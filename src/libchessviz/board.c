@@ -23,32 +23,28 @@ int board(char desk[][])
     desk[1][7] = 'N';
     desk[1][8] = 'R';
     desk[2][0] = '2';
-    
-    for (i = 1; i < 9; i++)
-    {
-    	desk[2][i] = 'P';
+
+    for (i = 1; i < 9; i++) {
+        desk[2][i] = 'P';
     }
-    
+
     desk[3][0] = '3';
     desk[4][0] = '4';
     desk[5][0] = '5';
     desk[6][0] = '6';
-    
-    for (i = 3; i < 6; i++)
-    {
-    	for (j = 1; j < 9; j++)
-    	{
-    		desk[i][j] = ' ';
-    	}
+
+    for (i = 3; i < 6; i++) {
+        for (j = 1; j < 9; j++) {
+            desk[i][j] = ' ';
+        }
     }
-    
+
     desk[7][0] = '7';
-    
-    for (i = 1; i < 9; i++)
-    {
-    	desk[7][i] = 'p';
+
+    for (i = 1; i < 9; i++) {
+        desk[7][i] = 'p';
     }
-    
+
     desk[8][0] = '8';
     desk[8][1] = 'r';
     desk[8][2] = 'n';
@@ -58,7 +54,6 @@ int board(char desk[][])
     desk[8][6] = 'b';
     desk[8][7] = 'n';
     desk[8][8] = 'r';
-    
 
     return 0;
 }

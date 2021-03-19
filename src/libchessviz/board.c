@@ -1,9 +1,9 @@
+#pragma once
 #include <stdio.h>
 
-int main()
+int board(char desk[][])
 {
     int i, j;
-    char desk[9][9];
     desk[0][0] = ' ';
     desk[0][1] = 'a';
     desk[0][2] = 'b';
@@ -59,16 +59,6 @@ int main()
     desk[8][7] = 'n';
     desk[8][8] = 'r';
     
-    for (i = 8; i > -1; i--)
-    {
-    	for (j = 0; j < 9; j++)
-    	{
-    		printf("%c ", desk[i][j]);
-    	}
-    	printf("\n");
-    }
-    
-
 
     return 0;
 }

@@ -1,29 +1,29 @@
-all: chess
+all: bin/chess
 
-chess: main.o libchessviz.a board_read.o
-	gcc -g -Wall -Werror -o chess main.o libchessviz.o board_read.o
+bin/chess: obj/src/chessviz/main.o obj/src/libchessviz/libchessviz.a obj/src/chessviz/board_read.o
+	gcc -Wall -Werror -o bin/chess obj/src/chessviz/main.o obj/src/libchessviz/libchessviz.a obj/src/chessviz/board_read.o
 	
-main.o: main.c
-	gcc -g -Wall -Werror -o main.o main.c
+obj/src/chessviz/main.o: src/chessviz/main.c
+	gcc -I src -Wall -Werror -c -o obj/src/chessviz/main.o src/chessviz/main.c
 	
-board_read.o: board_read.c
-	gcc -g -Wall -Werror -o board_read.o board_read.c
+obj/src/chessviz/board_read.o: src/chessviz/board_read.c
+	gcc -I src -Wall -Werror -c -o obj/src/chessviz/board_read.o src/chessviz/board_read.c
 	
-libchessviz.a: board.o board_print_plain.o move.o
-	ar rcs libchessviz.a board.o board_print_plain.o move.o
+obj/src/libchessviz/libchessviz.a: obj/src/libchessviz/board.o obj/src/libchessviz/board_print_plain.o obj/src/libchessviz/move.o
+	ar rcs obj/src/libchessviz/libchessviz.a obj/src/libchessviz/board.o obj/src/libchessviz/board_print_plain.o obj/src/libchessviz/move.o
 	
-board.o: board.c
-	gcc -Wall -Werror -o board.o board.c
+obj/src/libchessviz/board.o: src/libchessviz/board.c
+	gcc -I src -Wall -Werror -c -o obj/src/libchessviz/board.o src/libchessviz/board.c
 	
-board_print_plain.o: board_print_plain.c
-	gcc -Wall -Werror -o board_print_plain.o board_print_plain.c
+obj/src/libchessviz/board_print_plain.o: src/libchessviz/board_print_plain.c
+	gcc -I src -Wall -Werror -c -o obj/src/libchessviz/board_print_plain.o src/libchessviz/board_print_plain.c
 	
-move.o: move.c
-	gcc -Wall -Werror -o move.o move.c
+obj/src/libchessviz/move.o: src/libchessviz/move.c
+	gcc -I src -Wall -Werror -c -o obj/src/libchessviz/move.o src/libchessviz/move.c
 	
 
 .PHONY: all install uninstall clean
 
 clean:
-	*.o
-	*.o
+	rm *.o
+	rm *.exe

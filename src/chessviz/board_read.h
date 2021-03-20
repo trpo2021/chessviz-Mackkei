@@ -1,3 +1,3 @@
 #pragma once
 
-int boardRead(char move[]);
+int boardRead(char chessMove[]);

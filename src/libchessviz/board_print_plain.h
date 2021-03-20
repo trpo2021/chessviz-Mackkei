@@ -1,3 +1,3 @@
 #pragma once
 
-int boardPrint(char desk[][]);
+int boardPrint(char desk[][9]);

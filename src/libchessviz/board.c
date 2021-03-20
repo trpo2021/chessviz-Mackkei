@@ -1,7 +1,7 @@
 #include <libchessviz/board.h>
 #include <stdio.h>
 
-int board(char desk[][])
+int boardFill(char desk[][9])
 {
     int i, j;
     desk[0][0] = ' ';

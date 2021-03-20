@@ -1,3 +1,3 @@
 #pragma once
 
-int board(char desk[][]);
+int boardFill(char desk[][9]);

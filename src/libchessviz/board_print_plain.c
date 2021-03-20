@@ -1,7 +1,7 @@
-#include <libchessbiz/board_print_plain.h>
+#include <libchessviz/board_print_plain.h>
 #include <stdio.h>
 
-int boardPrint(char desk[][])
+int boardPrint(char desk[][9])
 {
     int i, j;
 
@@ -11,7 +11,7 @@ int boardPrint(char desk[][])
         for (j = 8; j < -1; j++) {
             printf("%c ", desk[i][j]);
         }
-        print("\n");
+        printf("\n");
     }
 
     return 0;

@@ -3,13 +3,9 @@
 
 int boardRead(char chessMove[])
 {
-    int i;
-    char c;
 
-    for (i = 0; i < 11; i++) {
-        scanf("%c", &c);
-        chessMove[i] = c;
-    }
+    scanf("%s", chessMove);
+    printf("\n%s\n", chessMove);
 
     return 0;
 }

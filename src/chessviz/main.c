@@ -8,16 +8,26 @@ int main()
 {
     char desk[9][9];
     char chessMove[11];
+    int check;
+    check = 0;
 
     boardFill(desk);
     boardPrint(desk);
+    printf("Move example: 'e2-e4'\nType 0 to exit program");
 
     while (1) {
         printf("\nType a move: ");
         boardRead(chessMove);
-        move(desk, chessMove);
-        if (move(desk, chessMove) == 1)
+        check = move(desk, chessMove);
+        if (check == 1) {
+            printf("\nInput data fail\n");
             break;
+        }
+        if (check == 2) {
+            printf("\n\nExiting program\n");
+            break;
+        }
+
         boardPrint(desk);
     }
 

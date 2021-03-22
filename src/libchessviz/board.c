@@ -4,7 +4,7 @@
 int boardFill(char desk[][9])
 {
     int i, j;
-    desk[0][0] = ' ';
+    desk[0][0] = 32;
     desk[0][1] = 'a';
     desk[0][2] = 'b';
     desk[0][3] = 'c';
@@ -35,7 +35,7 @@ int boardFill(char desk[][9])
 
     for (i = 3; i < 6; i++) {
         for (j = 1; j < 9; j++) {
-            desk[i][j] = ' ';
+            desk[i][j] = 32;
         }
     }
 

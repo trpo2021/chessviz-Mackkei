@@ -25,5 +25,5 @@ obj/src/libchessviz/move.o: src/libchessviz/move.c
 .PHONY: all install uninstall clean
 
 clean:
-	rm *.o
-	rm *.exe
+	rm obj/src/*/*.o
+	rm bin/chess

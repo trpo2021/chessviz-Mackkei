@@ -27,3 +27,4 @@ obj/src/libchessviz/move.o: src/libchessviz/move.c
 clean:
 	rm obj/src/*/*.o
 	rm bin/chess
+	rm obj/src/libchessviz/libchessviz.a

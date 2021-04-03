@@ -27,4 +27,3 @@ int move(char desk[][9], char chessMove[])
 
     return 0;
 }
-

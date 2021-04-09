@@ -9,6 +9,8 @@ int main()
     char desk[9][9];
     char chessMove[11];
     int check;
+    int step;
+    step = 1;
     check = 0;
 
     boardFill(desk);
@@ -18,7 +20,7 @@ int main()
     while (1) {
         printf("\nType a move: ");
         boardRead(chessMove);
-        check = move(desk, chessMove);
+        check = move(desk, chessMove, step);
         if (check == 1) {
             printf("\nInput data fail\n");
             break;
@@ -28,7 +30,24 @@ int main()
             break;
         }
 
+        if (check == 3) {
+            printf("\n\nWrong figure chosen. Must be Pawn\n");
+            break;
+        }
+
+        if (check == 4) {
+            printf("\n\nWrong step for pawn\n");
+            break;
+        }
+
+        if (check == 5) {
+            printf("\n\nStep out of border\n");
+            break;
+        }
+
         boardPrint(desk);
+
+        step *= -1;
     }
 
     return 0;

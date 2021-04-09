@@ -1,3 +1,3 @@
 #pragma once
 
-int move(char desk[][9], char chessMove[]);
+int move(char desk[][9], char chessMove[], int step);

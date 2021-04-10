@@ -1,6 +1,6 @@
-#include "chessviz/board_read.h"
 #include "libchessviz/board.h"
 #include "libchessviz/board_print_plain.h"
+#include "libchessviz/board_read.h"
 #include "libchessviz/move.h"
 #include <stdio.h>
 
@@ -9,8 +9,6 @@ int main()
     char desk[9][9];
     char chessMove[11];
     int check;
-    int step;
-    step = 1;
     check = 0;
 
     boardFill(desk);
@@ -20,7 +18,7 @@ int main()
     while (1) {
         printf("\nType a move: ");
         boardRead(chessMove);
-        check = move(desk, chessMove, step);
+        check = move(desk, chessMove);
         if (check == 1) {
             printf("\nInput data fail\n");
             break;
@@ -36,7 +34,7 @@ int main()
         }
 
         if (check == 4) {
-            printf("\n\nWrong step for pawn\n");
+            printf("\n\nWrong figure chosen. Must be King\n");
             break;
         }
 
@@ -45,9 +43,32 @@ int main()
             break;
         }
 
-        boardPrint(desk);
+        if (check == 6) {
+            printf("\n\nWrong figure chosen. Must be Queen\n");
+            break;
+        }
 
-        step *= -1;
+        if (check == 7) {
+            printf("\n\nWrong figure chosen. Must be Rook\n");
+            break;
+        }
+
+        if (check == 8) {
+            printf("\n\nWrong figure chosen. Must be knight\n");
+            break;
+        }
+
+        if (check == 9) {
+            printf("\n\nWrong figure chosen. Must be Bishop\n");
+            break;
+        }
+
+        if (check == 10) {
+            printf("\n\nCheckmate, well done!\n");
+            break;
+        }
+
+        boardPrint(desk);
     }
 
     return 0;

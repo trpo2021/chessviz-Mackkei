@@ -11,7 +11,7 @@ int move(char desk[][9], char chessMove[])
             return 2;
     }
 
-    if (chessMove[0] > '`' && chessMove[0] < 'k') {
+    if (chessMove[0] > '`' && chessMove[0] < 'i') {
         j = chessMove[0] - '`';
         i = chessMove[1] - '0';
         c = 0;

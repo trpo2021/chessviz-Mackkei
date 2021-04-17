@@ -1,8 +1,8 @@
 #pragma once
 
 enum test {
-	SUCCESS,
-	WRONGINPUT,
+  
+	WRONGINPUT = 1,
 	EXITSUCCESS,
 	PAWNERROR,
 	KINGERROR,

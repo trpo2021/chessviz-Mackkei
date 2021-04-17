@@ -4,5 +4,4 @@
 
 CTEST(chessmove_suite, input_chess)
 {
-	
 }

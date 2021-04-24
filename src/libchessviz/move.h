@@ -11,7 +11,7 @@ enum test {
     ROOKERROR,
     KNIGHTERROR,
     BISHOPERROR,
-    CHECKMATE;
+    CHECKMATE
 };
 
 int move(char desk[][9], char chessMove[]);

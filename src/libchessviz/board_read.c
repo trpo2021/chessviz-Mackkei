@@ -1,4 +1,4 @@
-#include <chessviz/board_read.h>
+#include <libchessviz/board_read.h>
 #include <stdio.h>
 
 int boardRead(char chessMove[])

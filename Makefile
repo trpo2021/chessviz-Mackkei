@@ -1,30 +1,65 @@
-all: bin/chess
+APP_NAME = chessviz
+TEST_NAME = test
+LIB_NAME = libchessviz
 
-bin/chess: obj/src/chessviz/main.o obj/src/libchessviz/libchessviz.a
-	gcc -Wall -Werror -o bin/chess obj/src/chessviz/main.o obj/src/libchessviz/libchessviz.a
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -I src -I thirdparty -MP -MMD
+LDFLAGS =
+LDLIBS =
+
+BIN_DIR = bin
+OBJ_DIR = obj
+SRC_DIR = src
+TEST_DIR = test
+TP_DIR = thirdparty
+
+APP_PATH = $(BIN_DIR)/$(APP_NAME)
+TEST_PATH = $(BIN_DIR)/$(TEST_NAME)
+CTEST_PATH = $(TP_DIR)/ctest.h
+LIB_PATH = $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)/$(LIB_NAME).a
+
+SRC_EXT = c
+
+APP_SOURCES = $(shell find $(SRC_DIR)/$(APP_NAME) -name '*.$(SRC_EXT)')
+APP_OBJECTS = $(APP_SOURCES:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(SRC_DIR)/%.o)
+
+TEST_SOURCES = $(shell find $(TEST_DIR)/ -name '*.$(SRC_EXT)')
+TEST_OBJECTS = $(TEST_SOURCES:$(TEST_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(TEST_DIR)/%.o)
+
+LIB_SOURCES = $(shell find $(SRC_DIR)/$(LIB_NAME) -name '*.$(SRC_EXT)')
+LIB_OBJECTS = $(LIB_SOURCES:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(SRC_DIR)/%.o)
+
+DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d) $(TEST_OBJECTS:.o=.d)
+
+.PHONY: all
+all: $(APP_PATH)
+
+-include $(DEPS)
+
+$(APP_PATH): $(APP_OBJECTS) $(LIB_PATH)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
 	
-obj/src/chessviz/main.o: src/chessviz/main.c
-	gcc -I src -Wall -Werror -c -o obj/src/chessviz/main.o src/chessviz/main.c
+.PHONY: test
+
+test: $(TEST_PATH)
+	$(TEST_PATH)
 	
-obj/src/libchessviz/libchessviz.a: obj/src/libchessviz/board.o obj/src/libchessviz/board_print_plain.o obj/src/libchessviz/move.o obj/src/chessviz/board_read.o
-	ar rcs obj/src/libchessviz/libchessviz.a obj/src/libchessviz/board.o obj/src/libchessviz/board_print_plain.o obj/src/libchessviz/move.o obj/src/chessviz/board_read.o
-	
-obj/src/libchessviz/board.o: src/libchessviz/board.c
-	gcc -I src -Wall -Werror -c -o obj/src/libchessviz/board.o src/libchessviz/board.c
-	
-obj/src/libchessviz/board_print_plain.o: src/libchessviz/board_print_plain.c
-	gcc -I src -Wall -Werror -c -o obj/src/libchessviz/board_print_plain.o src/libchessviz/board_print_plain.c
-	
-obj/src/libchessviz/move.o: src/libchessviz/move.c
-	gcc -I src -Wall -Werror -c -o obj/src/libchessviz/move.o src/libchessviz/move.c
-	
-obj/src/chessviz/board_read.o: src/chessviz/board_read.c
-	gcc -I src -Wall -Werror -c -o obj/src/chessviz/board_read.o src/chessviz/board_read.c
+$(TEST_PATH): $(TEST_OBJECTS) $(LIB_PATH) $(CTEST_PATH)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(TEST_OBJECTS) $(LIB_PATH) -o $@ $(LDFLAGS) $(LDLIBS)
+
+$(LIB_PATH): $(LIB_OBJECTS)
+	ar rcs $@ $^
+
+$(OBJ_DIR)/%.o: %.c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 	
 
-.PHONY: all install uninstall clean
 
+	
+.PHONY: clean
 clean:
-	rm obj/src/*/*.o
-	rm bin/chess
-	rm obj/src/libchessviz/libchessviz.a
+	$(RM) $(APP_PATH) $(LIB_PATH)
+	find $(OBJ_DIR) -name '*.o' -exec $(RM) '{}' \;
+	find $(OBJ_DIR) -name '*.d' -exec $(RM) '{}' \;
+

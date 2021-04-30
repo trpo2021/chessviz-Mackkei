@@ -15,7 +15,6 @@ int boardPrint(char desk[][9])
         }
         printf("\n");
     }
-    printf("\n-%d-\n", desk[0][0]);
 
     return 0;
 }

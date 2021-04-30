@@ -1,4 +1,5 @@
 *.o
 *.a
-bin/chess
+bin/chessviz
+bin/test
 obj/*

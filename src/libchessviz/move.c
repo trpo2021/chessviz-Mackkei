@@ -6,10 +6,9 @@ int move(char desk[][9], char chessMove[])
 {
     int i, j, m, n, c;
     char t;
-    for (i = 0; i < 11; i++) {
-        if (chessMove[i] == '0')
-            return EXITSUCCESS;
-    }
+
+    if (chessMove[0] == '0')
+        return EXITSUCCESS;
 
     if (chessMove[0] > '`' && chessMove[0] < 'i') {
         j = chessMove[0] - '`';

@@ -1,8 +1,8 @@
-#include "libchessviz/board.h"
 #include "libchessviz/move.h"
+#include "libchessviz/board.h"
 
-#include <string.h>
 #include <ctest.h>
+#include <string.h>
 
 CTEST(chessmove_suite, success_exit)
 {

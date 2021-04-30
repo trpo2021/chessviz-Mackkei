@@ -2,4 +2,9 @@
 *.a
 bin/chessviz
 bin/test
-obj/*
+obj/src/*.o
+obj/src/*.a
+obj/src/*.d
+obj/test/*.o
+obj/test/*.a
+obj/test/*.d

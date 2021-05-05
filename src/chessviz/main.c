@@ -19,51 +19,51 @@ int main()
         printf("\nType a move: ");
         boardRead(chessMove);
         check = move(desk, chessMove);
-        if (check == 1) {
+        if (check == WRONGINPUT) {
             printf("\nInput data fail\n");
             break;
         }
-        if (check == 2) {
+        if (check == EXITSUCCESS) {
             printf("\n\nExiting program\n");
             break;
         }
 
-        if (check == 3) {
+        if (check == PAWNERROR) {
             printf("\n\nWrong figure chosen. Must be Pawn\n");
             break;
         }
 
-        if (check == 4) {
+        if (check == KINGERROR) {
             printf("\n\nWrong figure chosen. Must be King\n");
             break;
         }
 
-        if (check == 5) {
+        if (check == BORDERLIMIT) {
             printf("\n\nStep out of border\n");
             break;
         }
 
-        if (check == 6) {
+        if (check == QUEENERROR) {
             printf("\n\nWrong figure chosen. Must be Queen\n");
             break;
         }
 
-        if (check == 7) {
+        if (check == ROOKERROR) {
             printf("\n\nWrong figure chosen. Must be Rook\n");
             break;
         }
 
-        if (check == 8) {
+        if (check == KNIGHTERROR) {
             printf("\n\nWrong figure chosen. Must be knight\n");
             break;
         }
 
-        if (check == 9) {
+        if (check == BISHOPERROR) {
             printf("\n\nWrong figure chosen. Must be Bishop\n");
             break;
         }
 
-        if (check == 10) {
+        if (check == CHECKMATE) {
             printf("\n\nCheckmate, well done!\n");
             break;
         }
